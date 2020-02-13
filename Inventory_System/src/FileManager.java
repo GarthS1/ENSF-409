@@ -1,4 +1,4 @@
-import java.io.*;
+	import java.io.*;
 import java.util.*;
 
 /**
@@ -7,17 +7,26 @@ import java.util.*;
  *
  */
 public class FileManager {
-	private SupplierList suppliers;
+	/**
+	 * Supplier list from file 
+	 */
+	ArrayList<Supplier> suppliers;
+	/**
+	 * Default constructor has no variables
+	 */
+	public FileManager () { }
 	/**
 	 * Loads the file for items
 	 * I separated the load function for items and suppliers as the File IO will be different for each
 	 * and each will need to read into different objects making a generic load() impractical 
-	 * @throws FileNotFoundException when file not found
+	 * @return The item list from the file 
 	 */
-	public Inventory loadItems(String fileName) throws FileNotFoundException{
-		Inventory items = new Inventory();
+	public ArrayList<Item> loadItems(){
+		
+		ArrayList<Item> items = new ArrayList<Item>();
+		
 		try {
-			FileReader fr = new FileReader(fileName);
+			FileReader fr = new FileReader("C:\\Users\\Garth\\Documents\\GitHub\\ENSF-409\\Inventory_System\\src\\items.txt");
 			BufferedReader br = new BufferedReader(fr);
 			
 			String line = "";
@@ -28,9 +37,9 @@ public class FileManager {
 				Supplier theSupplier = findSupplier(supplierId);
 				if(theSupplier != null) {
 					Item myItem = new Item(Integer.parseInt(temp[0]), temp[1], Integer.parseInt(temp[2]),
-							Float.parseFloat(temp[3]), theSupplier);
-					items.addItem(myItem);
-					theSupplier.getItemList().add(myItem);
+							Double.parseDouble(temp[3]), theSupplier);
+					items.add(myItem);
+					theSupplier.getItems().add(myItem);
 				}
 			}
 		} catch (Exception e) {
@@ -38,12 +47,16 @@ public class FileManager {
 		}
 		return items;
 	}
-	
+	/**
+	 * Searches for the correct supplier 
+	 * @param supplierId The Id associated with the supplier 
+	 * @return The supplier which supplies the item 
+	 */
 	private Supplier findSupplier(int supplierId) {
 		Supplier theSupplier = null;
 		for(Supplier s : suppliers) {
-			if(s.getSupId() == supplierId) {
-				theSupplier = s; 
+			if(s.getSupplierId() == supplierId) {
+				theSupplier = s;  	 	
 				break;
 			}
 		}
@@ -51,10 +64,23 @@ public class FileManager {
 	}
 	/**
 	 * Loads the file for suppliers
+	 * @returns The supplier list from the file 
 	 */
-	public ArrayList<Supplier> loadSuppliers(String fileName) {
-		ArrayList<Supplier> suppliers = new ArrayList<Supplier>();	
-		File suppliersTxt = new File(fileName);
+	public ArrayList<Supplier> loadSuppliers() {
+		 suppliers = new ArrayList<Supplier>();	
+		
+		try {
+			FileReader suppliersTxt = new FileReader("C:\\Users\\Garth\\Documents\\GitHub\\ENSF-409\\Inventory_System\\src\\suppliers.txt");
+			BufferedReader br = new BufferedReader(suppliersTxt);
+			
+			String line = "";
+			while((line = br.readLine()) != null) {
+				String[] temp = line.split(";");
+				suppliers.add(new Supplier(Integer.parseInt(temp[0]), temp[1], temp[2], temp[3]));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		return suppliers;
 	}
 }

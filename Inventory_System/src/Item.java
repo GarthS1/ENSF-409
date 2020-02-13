@@ -19,15 +19,15 @@ public class Item {
 	/** 
 	 *  Price of the tool 
 	 */
-	private float price;
-	/**
-	 *  Supplier number which supplies the tool 
-	 */
-	private int supplierId;
+	private double price;
 	/** 
 	 * Supplier which supplies the tool 
 	 */
 	private Supplier itemSupplier;
+	/**
+	 * Boolean which tracks if item has yet to be ordered
+	 */
+	private boolean ordered;
 	/**
 	 * Constructor for Item
 	 * @param toolId Id to be set too  
@@ -36,12 +36,13 @@ public class Item {
 	 * @param price Price of item
 	 * @param itemSupplier Supplier of the item
 	 */
-	public Item(int toolId, String name, int stock, float price, Supplier itemSupplier) {
+	public Item(int toolId, String name, int stock, double price, Supplier itemSupplier) {
 		setToolId(toolId);
 		setName(name);
 		setStock(stock);
 		setPrice(price);
 		setItemSupplier(itemSupplier);
+		ordered = false;
 	}
 	/**
 	 * Returns the unique number associated with the tool
@@ -71,31 +72,17 @@ public class Item {
 		this.itemSupplier = itemSupplier;
 	}
 	/**
-	 * Returns the unique number associated with the supplier 
-	 * @return supplierId Id associated with supplier 
-	 */
-	public int getSupplierId() {
-		return supplierId;
-	}
-	/**
-	 * Sets the supplier Id
-	 * @param supplierId supplier Id assocaited with tool 
-	 */
-	public void setSupplierId(int supplierId) {
-		this.supplierId = supplierId;
-	}
-	/**
 	 * Shows the price of the tool
 	 * @return price of the tool 
 	 */
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 	/**
 	 * Changes the price of the tool 
 	 * @param price to be set to
 	 */
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	/**
@@ -125,6 +112,32 @@ public class Item {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+	/**
+	 * Overrides the toString function to print relevant information 
+	 */
+	@Override
+	public String toString() {
+		String s = "ID: " + getToolId() + " Name: " + getName() + " Stock: " + getStock() + "  Price $"  + getPrice() + "\n";
+		return s;
+	}
+	/**
+	 * Decrease the item stock by 1
+	 */
+	public void decreaseItem() {
+		stock--;
+	}
+	/**
+	 * Checks the quantity of the item and if the item already has an order
+	 * @return If the item needs to be ordered 
+	 */
+	public boolean needToOrder() {
+		boolean order = false;
+		if(getStock() < 40 && ordered == false) {
+			order = true;
+			ordered = true;
+		}
+		return order;
 	}
 	
 }

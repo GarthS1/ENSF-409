@@ -1,8 +1,7 @@
-import java.io.FileNotFoundException;
 
 /** 
  * The back end of the program that controls the Inventory and all the data loaded from the file
- * @author Garth
+ * @author Garth Slaney
  *
  */
 public class Shop {
@@ -15,11 +14,40 @@ public class Shop {
 	 */
 	private Inventory items;
 	/**
-	 * loads the file and initializes the items and suppliers
-	 * @throws FileNotFoundException when file not found 
+	 * Constructor for Shop 
+	 * @param suppliers SupplierList to be set to 
+	 * @param items Inventory to be set to 
 	 */
-	public void loadFile() throws FileNotFoundException {
-		FileManager file = new FileManager();
-		items = file.loadItems("C:\\Users\\Garth\\Documents\\GitHub\\ENSF-409\\Inventory_System\\src\\items.txt");
+	public Shop (SupplierList suppliers, Inventory items) {
+		setSuppliers(suppliers);
+		setItems(items);
+	}
+	/**
+	 * Gets the SupplierList 
+	 * @return The Supplier List in the shop 
+	 */
+	public SupplierList getSuppliers() {
+		return suppliers;
+	}
+	/**
+	 * Set the suppliers List 
+	 * @param suppliers The Supplier List to be set to 
+	 */
+	public void setSuppliers(SupplierList suppliers) {
+		this.suppliers = suppliers;
+	}
+	/**
+	 * Gets the Inventory 
+	 * @return The inventory Shop uses 
+	 */
+	public Inventory getItems() {
+		return items;
+	}
+	/**
+	 * Sets the items list
+	 * @param items The Inventory to be set to 
+	 */
+	public void setItems(Inventory items) {
+		this.items = items;
 	}
 }

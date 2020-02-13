@@ -1,0 +1,8 @@
+*********************************************************************************************************
+ORDER ID:            809
+Date Ordered:        2020-02-13
+
+Item descripation:   Widgets
+Amount ordered:      41
+Supplier:            Winork Manufacturing Inc.
+
