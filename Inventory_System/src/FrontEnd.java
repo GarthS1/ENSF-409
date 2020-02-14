@@ -95,7 +95,7 @@ public class FrontEnd {
 	 * Search by ID to return Tool 
 	 */
 	private void searchToolId() {
-		System.out.println("Please enter the ID of the item");
+		System.out.println("Please enter the ID of the item\n");
 		int s = scan.nextInt();
 		scan.nextLine();
 		System.out.print(theShop.getItems().searchID(s));		
@@ -104,7 +104,7 @@ public class FrontEnd {
 	 * Search by name to return Tool 
 	 */
 	private void searchToolName() {
-		System.out.println("Please enter the name of the item");
+		System.out.println("Please enter the name of the item\n");
 		String s = scan.nextLine();
 		System.out.print(theShop.getItems().searchName(s));
 
@@ -119,6 +119,6 @@ public class FrontEnd {
 	 * Prints the menu for selecting what task the user wishes to do 
 	 */
 	private void printMenu() {
-		System.out.print("1.    List all tools\n2.    Search for tool by toolName\n3.    Search for tool by toolID\n4.    Check item quantity\n5.    Decrease item quantity\n6.    Print today's order\n7.    Exit");
+		System.out.print("1.    List all tools\n2.    Search for tool by toolName\n3.    Search for tool by toolID\n4.    Check item quantity\n5.    Decrease item quantity\n6.    Print today's order\n7.    Exit\n");
 	}
 }
