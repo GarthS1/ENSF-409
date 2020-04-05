@@ -1,5 +1,8 @@
 import java.io.*;
+
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 /**
  * The following class called BinSearchTree creates an empty 
  * tree, and allows the user of the class to insert new nodes into the tree.  
@@ -132,12 +135,12 @@ class BinSearchTree {
 	 * @param out - the output stream to print the node information
 	 * @throws IOException
 	 */
-	public void print_tree(Node cur, PrintWriter out) throws IOException {
+	public void print_tree(Node cur, JTextArea out) throws IOException {
 		if (cur.left!=null)
 			print_tree(cur.left,out);
 		String s = cur.data.id+"        "+cur.data.faculty+"     "+
                                  cur.data.major+ "       "+cur.data.year + "\n";
-		out.println(s);
+		out.append(s); 				//was unable to use a Print Writer 
 		System.out.println(s);
 		if (cur.right!=null)
 			print_tree(cur.right,out);
