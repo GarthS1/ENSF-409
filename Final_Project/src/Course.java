@@ -1,25 +1,39 @@
 import java.util.ArrayList;
-
+/**
+ * The model for a course 
+ * @author Garth Slaney, Jiho Kim, Eddie Kim
+ *
+ */
 public class Course {
-
+	/**
+	 * The name of the course
+	 */
 	private String courseName;
+	/**
+	 * The course number of the course
+	 */
 	private int courseNum;
+	/**
+	 * Courses required to take this course
+	 */
 	private ArrayList<Course> preReq;
+	/**
+	 * All offerings of the course 
+	 */
 	private ArrayList<CourseOffering> offeringList;
 
-	public Course(String courseName, int courseNum) {
+	public Course(String courseName, int courseNum, ArrayList<Course> preReq) {
 		this.setCourseName(courseName);
 		this.setCourseNum(courseNum);
-		// Both of the following are only association
-		preReq = new ArrayList<Course>();
+		
+		this.preReq = preReq;
 		offeringList = new ArrayList<CourseOffering>();
 	}
 
 	public void addOffering(CourseOffering offering) {
 		if (offering != null && offering.getTheCourse() == null) {
 			offering.setTheCourse(this);
-			if (!offering.getTheCourse().getCourseName().equals(courseName)
-					|| offering.getTheCourse().getCourseNum() != courseNum) {
+			if (!offering.getTheCourse().getCourseName().equals(courseName) || offering.getTheCourse().getCourseNum() != courseNum) {
 				System.err.println("Error! This section belongs to another course!");
 				return;
 			}
@@ -60,5 +74,4 @@ public class Course {
 		else
 			return offeringList.get(i);
 	}
-
 }

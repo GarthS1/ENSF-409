@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 
-//This class is simulating a database for our
-//program
+/**
+ * Loads from the database !!! NEED FURTHER IMPLEMATION THIS IS A SHALLOW SIML!!!!!!
+ * @author Garth Slaney, Jiho Kim, Eddie Kim
+ *
+ */
 public class DBManager {
 	
 	ArrayList <Course> courseList;
@@ -12,10 +15,15 @@ public class DBManager {
 
 	public ArrayList readFromDataBase() {
 		// TODO Auto-generated method stub
-		courseList.add(new Course ("ENGG", 233));
-		courseList.add(new Course ("ENSF", 409));
-		courseList.add(new Course ("PHYS", 259));
+		courseList.add(new Course ("ENGG", 233, null));
+		courseList.add(new Course ("ENSF", 409, null));
+		courseList.add(new Course ("PHYS", 259, null));
 		return courseList;
+	}
+
+	public ArrayList readFromDataBaseStudent() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
