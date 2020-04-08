@@ -13,8 +13,7 @@ public class StudentCatalogue {
 		setTheStudents(data.readFromDataBaseStudent());
 	}
 
-	public Student searchStudent(int parseInt) {
-		// TODO Auto-generated method stub
+	public Student searchStudent(String string) {
 		return null;
 	}
 

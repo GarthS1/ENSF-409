@@ -20,19 +20,43 @@ public class RegistrationController implements Runnable{
 	 */
 	CourseCatalogue cat;
 	/**
-	 * The student currently signed in
+	 * The student catalogue which is used
+	 * */
+	StudentCatalogue stu;
+	/**
+	 * The student currently logged on
 	 */
 	Student st;
+	
 
-	public RegistrationController(BufferedReader socketIn, PrintWriter socketOut, CourseCatalogue cat, Student st) {
+	public RegistrationController(BufferedReader socketIn, PrintWriter socketOut, CourseCatalogue cat, StudentCatalogue stu) {
 		this.socketIn = socketIn;
 		this.socketOut = socketOut;
 		this.cat = cat;
-		this.st = st;
+		this.stu = stu;
 	}
 	
 	@Override
 	public void run() {
+		
+		boolean studentFound = false;
+		String line;
+		while(!studentFound) {
+			try {
+				line = socketIn.readLine();
+				st = stu.searchStudent(line);  //makes sure valid ID is entered before running
+				if(st != null) {
+					socketOut.println("Student found. Logging in.");
+					studentFound = true; 
+				}
+				else {
+					socketOut.println("No student with the ID entered matched. Please try again");								//error message if no ID matches 
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		String action; 
 		boolean exit = false;			//exit condition for the loop
 		while(!exit) {
