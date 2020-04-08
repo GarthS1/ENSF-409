@@ -56,13 +56,17 @@ public class RegistrationServer {
 				System.out.println("Connection accepted by server");
 				socketIn = new BufferedReader ( new InputStreamReader(aSocket.getInputStream()) );
 				socketOut = new PrintWriter ( aSocket.getOutputStream(), true);
-				Student st = stu.searchStudent(Integer.parseInt(socketIn.readLine()));  //makes sure valid ID is entered before running
-				if(st != null) {
-					RegistrationController reg = new RegistrationController(socketIn, socketOut, cat, st);   //constructs a runnable 
-					pool.execute(reg);																																			 //executes the runnable in a thread pool
-				}
-				else {
-					socketOut.print("No student with the ID eneter matched. Please try again");							//error message if no ID matches 
+				Student st = null;
+				while(st == null) {
+					st = stu.searchStudent(Integer.parseInt(socketIn.readLine()));  //makes sure valid ID is entered before running
+					if(st != null) {
+						socketOut.print("Student found. Logging in.");
+						RegistrationController reg = new RegistrationController(socketIn, socketOut, cat, st);   //constructs a runnable 
+						pool.execute(reg);																																			 //executes the runnable in a thread pool
+					}
+					else {
+						socketOut.print("No student with the ID eneter matched. Please try again");							//error message if no ID matches 
+					}
 				}
 			}
 			}catch(IOException e) {
