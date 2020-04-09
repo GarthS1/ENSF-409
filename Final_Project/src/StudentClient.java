@@ -40,7 +40,10 @@ public class StudentClient{
 				line = stdIn.readLine(); //read line from the user (i.e from the keyboard)
 				socketOut.println(line);
 				response = socketIn.readLine(); //read response from the socket
-				System.out.println("Response is: " + response); 
+				if(!response.equals("No student with the ID entered matched. Please try again")) {
+					view = new MenuGUI();
+				}
+				System.out.println("System Response: " + response); 
 			}
 		}catch(IOException e) {
 			e.getStackTrace();
