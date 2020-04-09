@@ -36,7 +36,7 @@ public class StudentClient{
 		
 		try {
 			while(true) {
-				System.out.println("Please enter a word: ");
+				System.out.println("Please enter a student ID: ");
 				line = stdIn.readLine(); //read line from the user (i.e from the keyboard)
 				socketOut.println(line);
 				response = socketIn.readLine(); //read response from the socket
