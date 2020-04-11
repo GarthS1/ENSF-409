@@ -12,15 +12,48 @@ import java.net.UnknownHostException;
 
 import javax.swing.JFrame;
 
+/**
+ * The client that runs the GUI and connects to the server
+ * @author Eddie Kim, Garth Slaney, Jiho Kim
+ *
+ */
 public class StudentClient{
 
+	/**
+	 * The client socket
+	 */
 	private Socket aSocket;
+	
+	/**
+	 * Output socket for client
+	 */
 	private PrintWriter socketOut;
+	
+	/**
+	 * Input socket for client
+	 */
 	private BufferedReader socketIn;
+	
+	/**
+	 * Input from the user
+	 */
 	private BufferedReader stdIn;
+	
+	/**
+	 * The student
+	 */
 	private Student student;
+	
+	/**
+	 * The main GUI
+	 */
 	private MenuGUI view;
 	
+	/**
+	 * Constructor for StudentClient 
+	 * @param serverName Name of the server
+	 * @param portNum The port number
+	 */
 	public StudentClient(String serverName, int portNum) {
 		try {
 			aSocket = new Socket(serverName, portNum);
@@ -32,6 +65,9 @@ public class StudentClient{
 		}
 	}
 	
+	/**
+	 * Communication with the server
+	 */
 	public void communicate() {
 		
 		String line = "";
@@ -54,6 +90,9 @@ public class StudentClient{
 		closeAll();
 	}
 	
+	/**
+	 * Closes the client sockets
+	 */
 	private void closeAll() {
 		try {
 			stdIn.close();
