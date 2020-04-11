@@ -1,3 +1,4 @@
+package ServerModel;
 import java.util.ArrayList;
 /**
  * Stores all students in the system !!!!!!!Needs further work!!!!!!!!!!
@@ -14,6 +15,12 @@ public class StudentCatalogue {
 	}
 
 	public Student searchStudent(String string) {
+		int id = Integer.parseInt(string);
+		for(Student s: theStudents){
+			if(s.getStudentId() == id){
+				return s;
+			}
+		}
 		return null;
 	}
 

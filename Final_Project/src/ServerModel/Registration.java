@@ -1,3 +1,4 @@
+package ServerModel;
 /**
  * Tracks the student and offering together
  * @author Garth Slaney, Jiho Kim, Eddie Kim

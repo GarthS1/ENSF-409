@@ -1,3 +1,4 @@
+package ServerModel;
 import java.util.ArrayList;
 /**
  * The model for a course 

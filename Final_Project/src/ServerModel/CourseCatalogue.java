@@ -1,3 +1,4 @@
+package ServerModel;
 import java.util.ArrayList;
 /**
  * The course catalogue which keeps track of all the course 

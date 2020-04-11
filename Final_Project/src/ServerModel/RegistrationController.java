@@ -1,3 +1,4 @@
+package ServerModel;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -101,6 +102,3 @@ public class RegistrationController implements Runnable{
 	}
 }
 		
-		
-
-

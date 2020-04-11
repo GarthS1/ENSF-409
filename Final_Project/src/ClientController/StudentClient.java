@@ -1,3 +1,6 @@
+package ClientController;
+import ClientView.*;
+import ServerModel.Student;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;

@@ -1,3 +1,4 @@
+package ServerModel;
 import java.util.ArrayList;
 /**
  * Simulates a course offering 
