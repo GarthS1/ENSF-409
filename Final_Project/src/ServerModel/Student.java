@@ -6,22 +6,32 @@ import java.util.ArrayList;
  *
  */
 public class Student {
-	/**
-	 * Name
-	 */
-	private String studentName;
 	/** 
 	 * Unique Id
 	 */
 	private int studentId;
 	/**
+	 * Current faculty
+	 */
+	private String faculty;
+	/**
+	 * Current major
+	 */
+	private String major;
+	/**
+	 * Current year
+	 */
+	private int year;
+	/**
 	 * All course currently registered for 
 	 */
 	private ArrayList<Registration> studentRegList;
 	
-	public Student (String studentName, int studentId) {
-		this.setStudentName(studentName);
-		this.setStudentId(studentId);
+	public Student (int id, String faculty, String major, int year) {
+		this.setStudentId(id);
+		this.setFaculty(faculty);
+		this.setMajor(major);
+		this.setYear(year);
 		studentRegList = new ArrayList<Registration>();
 	}
 	/**
@@ -55,15 +65,6 @@ public class Student {
 		}
 		return s;
 	}
-	
-	public String getStudentName() {
-		return studentName;
-	}
-
-	public void setStudentName(String studentName) {
-		this.studentName = studentName;
-	}
-
 	public int getStudentId() {
 		return studentId;
 	}
@@ -74,8 +75,26 @@ public class Student {
 	
 	@Override
 	public String toString () {
-		String st = "Student Name: " + getStudentName() + "\n" +
-				"Student Id: " + getStudentId() + "\n\n";
+		String st = "Student Id: " + getStudentId() + "\n" + "Faculty: " + getFaculty() + "\n" + "Major: " +
+				 getMajor() + "\n" +  "Year: " + getYear() + "\n\n";
 		return st;
+	}
+	public String getFaculty() {
+		return faculty;
+	}
+	public void setFaculty(String faculty) {
+		this.faculty = faculty;
+	}
+	public String getMajor() {
+		return major;
+	}
+	public void setMajor(String major) {
+		this.major = major;
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
 	}
 }

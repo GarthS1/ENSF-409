@@ -20,6 +20,25 @@ public class CourseCatalogue {
 	private void loadFromDataBase() {
 		DBManager db = new DBManager();
 		setCourseList(db.readFromDataBase());
+		
+		//This code is here to add course offerings 
+		Course myCourse = searchCat("ENGG", 233);
+		if (myCourse != null) {
+			createCourseOffering(myCourse, 1, 100);
+			createCourseOffering(myCourse, 2, 200);
+		}
+		
+		myCourse = searchCat("ENSF", 409);
+		if (myCourse != null) {
+			createCourseOffering(myCourse, 1, 50);
+			createCourseOffering(myCourse, 2, 60);
+		}
+		
+		myCourse = searchCat("PHYS", 259);
+		if (myCourse != null) {
+			createCourseOffering(myCourse, 1, 250);
+			createCourseOffering(myCourse, 2, 300);
+		}
 	}
 	/**
 	 * Manually creates a new course
