@@ -29,7 +29,6 @@ public class RegistrationController implements Runnable{
 	 */
 	Student st;
 	
-
 	public RegistrationController(BufferedReader socketIn, PrintWriter socketOut, CourseCatalogue cat, StudentCatalogue stu) {
 		this.socketIn = socketIn;
 		this.socketOut = socketOut;
@@ -38,10 +37,10 @@ public class RegistrationController implements Runnable{
 	}
 	
 	@Override
-	public void run() {
-		
+	public void run() {	
 		boolean studentFound = false;
 		String line;
+		
 		while(!studentFound) {
 			try {
 				line = socketIn.readLine();
@@ -51,7 +50,7 @@ public class RegistrationController implements Runnable{
 					studentFound = true; 
 				}
 				else {
-					socketOut.println("No student with the ID entered matched. Please try again");								//error message if no ID matches 
+					socketOut.println("No student with the ID entered matched. Please try again");	//error message if no ID matches 
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -67,7 +66,6 @@ public class RegistrationController implements Runnable{
 				case "search catalogue courses":
 					String course = socketIn.readLine();
 					int courseId = Integer.parseInt(socketIn.readLine());
-					
 					Course courseSearched = cat.searchCat(course, courseId);
 					socketOut.println(courseSearched);
 					break;
@@ -76,11 +74,11 @@ public class RegistrationController implements Runnable{
 					String course1 = socketIn.readLine();
 					int courseId1 = Integer.parseInt(socketIn.readLine());
 					Course courseSearched1 = cat.searchCat(course1, courseId1);
-					int section = Integer.parseInt(socketIn.readLine()) - 1; 									//need to subtract one to get effective address 
+					int section = Integer.parseInt(socketIn.readLine()) - 1; //need to subtract one to get effective address 
 				  addedCourse.completeRegistration(st, courseSearched1.getCourseOfferingAt(section));
 					break;
 				case "remove course from student course":
-					int removeId = Integer.parseInt(socketIn.readLine()) - 1; 								// decrease by 1 to get effective address 
+					int removeId = Integer.parseInt(socketIn.readLine()) - 1; // decrease by 1 to get effective address 
 					st.removeRegistration(removeId);
 					break;
 				case "view All courses in catalog":

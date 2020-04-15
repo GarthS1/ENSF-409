@@ -65,6 +65,7 @@ public class Student {
 		}
 		return s;
 	}
+	
 	public int getStudentId() {
 		return studentId;
 	}
@@ -73,28 +74,33 @@ public class Student {
 		this.studentId = studentId;
 	}
 	
+	public String getFaculty() {
+		return faculty;
+	}
+	
+	public void setFaculty(String faculty) {
+		this.faculty = faculty;
+	}
+	
+	public String getMajor() {
+		return major;
+	}
+	
+	public void setMajor(String major) {
+		this.major = major;
+	}
+	
+	public int getYear() {
+		return year;
+	}
+	
+	public void setYear(int year) {
+		this.year = year;
+	}
 	@Override
 	public String toString () {
 		String st = "Student Id: " + getStudentId() + "\n" + "Faculty: " + getFaculty() + "\n" + "Major: " +
 				 getMajor() + "\n" +  "Year: " + getYear() + "\n\n";
 		return st;
-	}
-	public String getFaculty() {
-		return faculty;
-	}
-	public void setFaculty(String faculty) {
-		this.faculty = faculty;
-	}
-	public String getMajor() {
-		return major;
-	}
-	public void setMajor(String major) {
-		this.major = major;
-	}
-	public int getYear() {
-		return year;
-	}
-	public void setYear(int year) {
-		this.year = year;
 	}
 }

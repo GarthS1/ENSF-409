@@ -18,37 +18,30 @@ import javax.swing.JFrame;
  *
  */
 public class StudentClient{
-
 	/**
 	 * The client socket
 	 */
-	private Socket aSocket;
-	
+	private Socket aSocket;	
 	/**
 	 * Output socket for client
 	 */
 	private PrintWriter socketOut;
-	
 	/**
 	 * Input socket for client
 	 */
 	private BufferedReader socketIn;
-	
 	/**
 	 * Input from the user
 	 */
 	private BufferedReader stdIn;
-	
 	/**
 	 * The student
 	 */
 	private Student student;
-	
 	/**
 	 * The main GUI
 	 */
 	private MenuGUI view;
-	
 	/**
 	 * Constructor for StudentClient 
 	 * @param serverName Name of the server
@@ -64,12 +57,10 @@ public class StudentClient{
 			e.printStackTrace();
 		}
 	}
-	
 	/**
 	 * Communication with the server
 	 */
-	public void communicate() {
-		
+	public void communicate() {	
 		String line = "";
 		String response = "";
 		
@@ -89,7 +80,6 @@ public class StudentClient{
 		}
 		closeAll();
 	}
-	
 	/**
 	 * Closes the client sockets
 	 */
@@ -104,10 +94,7 @@ public class StudentClient{
 	}
 	
 	public static void main(String[] args) throws IOException {
-		
-		StudentClient myClient = new StudentClient("localhost", 9898);
-		myClient.communicate();
-		
+	  StudentClient myClient = new StudentClient("localhost", 9898);
+		myClient.communicate();	
 	}
-
 }

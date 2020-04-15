@@ -18,9 +18,17 @@ import javax.swing.JOptionPane;
  *
  */
 public class DBManager implements IDBCredentials{
-	
+	/**
+	 * The courselist used from the database
+	 */
 	private ArrayList <Course> courseList;
+	/**
+	 * The studentlist used from the database
+	 */
 	private ArrayList<Student> studentList;
+	/**
+	 * The connection used for the database 
+	 */
 	private Connection conn;
 
 	public DBManager () {
@@ -45,7 +53,6 @@ public class DBManager implements IDBCredentials{
 			System.out.println("Problem");
 			e.printStackTrace();
 		} 
-
 		close();
 		return courseList;
 	}
@@ -168,7 +175,6 @@ public class DBManager implements IDBCredentials{
 			e.printStackTrace();
 		}
 	}
-
 	/**
 	 * Creates the table for courses
 	 */
@@ -190,9 +196,8 @@ public class DBManager implements IDBCredentials{
 	 */
 	public static void main(String args[]) {
 		DBManager mydb = new DBManager();
-		//mydb.createTableStudent();
-		//mydb.createTableCourses();
-		mydb.populateCourses();
+		mydb.createTableStudent();
+		mydb.createTableCourses();
 		mydb.close();
 	}
 }

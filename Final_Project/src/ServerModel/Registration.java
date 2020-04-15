@@ -14,7 +14,7 @@ public class Registration {
 	 */
 	private CourseOffering theOffering;
 	/**
-	 * The grade the student recieved in the course 
+	 * The grade the student received in the course 
 	 */
 	private char grade;
 	/**

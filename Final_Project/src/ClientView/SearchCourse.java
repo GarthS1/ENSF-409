@@ -86,7 +86,7 @@ public class SearchCourse {
 	 * This class handles what happens when a button is clicked. When "Cancel" is clicked, the frame closes.
 	 * When "Search" is pressed, the program goes through the database and retrieves information and displays the information about
 	 * the specified course.
-	 * @author jiho
+	 * @author Garth Slaney, Jiho Kim, Eddie Kim
 	 *
 	 */
 	private class SearchCourseListener implements ActionListener {

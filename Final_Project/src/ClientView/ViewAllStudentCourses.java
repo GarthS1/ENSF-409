@@ -63,7 +63,7 @@ public class ViewAllStudentCourses {
 
 	/**
 	 * This class handles what happens when a button is clicked. When "Back" is clicked, the frame closes.
-	 * @author jiho
+	 * @author Garth Slaney, Jiho Kim, Eddie Kim
 	 *
 	 */
 	private class ViewPastCoursesListener implements ActionListener {

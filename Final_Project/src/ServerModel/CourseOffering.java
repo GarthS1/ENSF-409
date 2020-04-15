@@ -72,14 +72,6 @@ public class CourseOffering {
 	public void setTheCourse(Course theCourse) {
 		this.theCourse = theCourse;
 	}
-	@Override
-	public String toString () {
-		String st = "\n";
-		st += getTheCourse().getCourseName() + " " + getTheCourse().getCourseNum() + "\n";
-		st += "Section Num: " + getSecNum() + ", section cap: "+ getSecCap() +"\n";
-		//We also want to print the names of all students in the section
-		return st;
-	}
 	
 	public boolean isEnoughStudents() {
 		return enoughStudents;
@@ -87,5 +79,13 @@ public class CourseOffering {
 	
 	public void setEnoughStudents(boolean enoughStudents) {
 		this.enoughStudents = enoughStudents;
+	}
+	@Override
+	public String toString () {
+		String st = "\n";
+		st += getTheCourse().getCourseName() + " " + getTheCourse().getCourseNum() + "\n";
+		st += "Section Num: " + getSecNum() + ", section cap: "+ getSecCap() +"\n";
+		//We also want to print the names of all students in the section
+		return st;
 	}
 }

@@ -84,7 +84,7 @@ class RemoveCourse {
 	/**
 	 * This class handles what happens when a button is clicked. When "Cancel" is clicked, the frame closes.
 	 * When the "Remove" button is clicked, the program goes into the database and deletes the course from the student.
-	 * @author jiho
+	 * @author Garth Slaney, Jiho Kim, Eddie Kim
 	 *
 	 */
 	private class RemoveCourseListener implements ActionListener {
