@@ -36,11 +36,9 @@ public class ViewCourse {
 	SearchCourse search;
 
 	/**
-	 * Creates a new GUI which prompts user to enter a course he/she would like to
-	 * search for.
+	 * Creates a new GUI which displays information about the course the user searched for.
 	 * 
-	 * @param m the main menu GUI which will be set to visible once the search
-	 *          course ends.
+	 * @param m the main menu GUI
 	 * @param s the search course menu GUI which will be set to visible once the 
 	 * information displayed is closed.
 	 */
@@ -80,10 +78,8 @@ public class ViewCourse {
 	}
 
 	/**
-	 * This class handles what happens when a button is clicked. When "Cancel" is
-	 * clicked, the frame closes. When "Search" is pressed, the program goes through
-	 * the database and retrieves information and displays the information about the
-	 * specified course.
+	 * This class handles what happens when a button is clicked. When "Back" is
+	 * clicked, the frame closes.
 	 * 
 	 * @author Garth Slaney, Jiho Kim, Eddie Kim
 	 *
