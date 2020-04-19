@@ -11,6 +11,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import ServerModel.Course;
+import ServerModel.Registration;
+
 /**
  * Class for creating a GUI for adding courses into a student's enrolled courses.
  * @author Garth Slaney, Jiho Kim, Eddie Kim
@@ -83,7 +86,9 @@ public class AddCourse {
 				 int result = JOptionPane.showConfirmDialog(null, "would you like to add this course?",
 							"confirmation", JOptionPane.YES_NO_OPTION);
 				 if(result == JOptionPane.YES_OPTION) {
-					 // send something through socket?
+						//Send course name 
+						//Send course num
+					 	//Send section number
 				 }
 			} else if(e.getSource() == cancelButton) {
 				frame.dispose();
