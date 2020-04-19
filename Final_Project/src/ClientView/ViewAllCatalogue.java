@@ -14,6 +14,8 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import ServerModel.CourseCatalogue;
+
 /**
  * This class creates a GUI for viewing all courses in the catalogue.
  * @author Garth Slaney, Jiho Kim, Eddie Kim
@@ -41,19 +43,11 @@ public class ViewAllCatalogue {
 		frame = new JFrame();
 		textPanel = new JPanel();
 		ViewCatalogueListener listener = new ViewCatalogueListener();
+		CourseCatalogue cat = new CourseCatalogue();
 		
 		//Replace this with information from the socket.
 		
-		String temp = null;
-		try {
-			temp = menu.getInSocket().readLine().toString();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		//for(int i = 0; i < 40; i++) {
-		//	temp += "course " + i + "\n";
-		//}
+		String temp = cat.toString();
 		
 		text = new JTextArea(temp);
 		JScrollPane scroll = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
