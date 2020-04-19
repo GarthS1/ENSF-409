@@ -2,6 +2,7 @@ package ClientView;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -37,16 +38,21 @@ public class ViewAllStudentCourses {
 		menu = m;
 		frame = new JFrame();
 		textPanel = new JPanel();
-
+		String temp = "";
+		
 		ViewPastCoursesListener listener = new ViewPastCoursesListener();
 		
 		//Replace this with information from the socket.
-		String temp = "";
-		for(int i = 0; i < 10; i++) {
-			temp += "course " + i + "\n";
+		try {
+			temp = menu.getInSocket().readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		if(temp != null)
+			text = new JTextArea(temp);
+		else
+			text = new JTextArea("Not Enrolled in any Course");
 		
-		text = new JTextArea(temp);
 		JScrollPane scroll = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scroll.setPreferredSize(new Dimension(300, 200));
 		cancelButton = new JButton("Back");
