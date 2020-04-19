@@ -31,14 +31,19 @@ public class MyListener implements ActionListener{
 		
 		menu.frame.setVisible(false);
 		if(e.getSource() == menu.searchCourseButton) {
+			menu.getOutSocket().print("search catalogue courses");
 			new SearchCourse(menu);
 		} else if(e.getSource() == menu.addCourseButton) {
+			menu.getOutSocket().print("add course to student course");
 			new AddCourse(menu);
 		} else if(e.getSource() == menu.removeCourseButton) {
+			menu.getOutSocket().print("remove course from student course");
 			new RemoveCourse(menu);
 		} else if(e.getSource() == menu.viewAllCatalogueButton) {
+			menu.getOutSocket().print("view All courses in catalog");
 			new ViewAllCatalogue(menu);
 		} else if(e.getSource() == menu.viewAllStudentCoursesButton) {
+			menu.getOutSocket().print("view all courses taken by student");
 			new ViewAllStudentCourses(menu);
 		}
 	}

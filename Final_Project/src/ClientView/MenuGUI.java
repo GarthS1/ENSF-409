@@ -1,4 +1,6 @@
 package ClientView;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 import javax.swing.BorderFactory;
@@ -22,14 +24,16 @@ public class MenuGUI {
 	 */
 	JButton searchCourseButton, addCourseButton, removeCourseButton, viewAllCatalogueButton, viewAllStudentCoursesButton, quitButton;
 	private JPanel panel;
-	private Socket outSocket;
+	private PrintWriter outSocket;
+	private BufferedReader inSocket;
 	
 	
 	/**
 	 * Creates a GUI for the main menu for the convenience of the user.
 	 */
-	public MenuGUI(Socket out){
+	public MenuGUI(PrintWriter out, BufferedReader in){
 		outSocket = out;
+		inSocket = in;
 		frame = new JFrame();
 		panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
@@ -69,4 +73,10 @@ public class MenuGUI {
 		frame.setVisible(true);
 	}
 	
+	public PrintWriter getOutSocket() {
+		return outSocket;
+	}
+	public BufferedReader getInSocket() {
+		return inSocket;
+	}
 }

@@ -2,6 +2,7 @@ package ClientView;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -42,10 +43,17 @@ public class ViewAllCatalogue {
 		ViewCatalogueListener listener = new ViewCatalogueListener();
 		
 		//Replace this with information from the socket.
-		String temp = "";
-		for(int i = 0; i < 40; i++) {
-			temp += "course " + i + "\n";
+		
+		String temp = null;
+		try {
+			temp = menu.getInSocket().readLine().toString();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		
+		//for(int i = 0; i < 40; i++) {
+		//	temp += "course " + i + "\n";
+		//}
 		
 		text = new JTextArea(temp);
 		JScrollPane scroll = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
