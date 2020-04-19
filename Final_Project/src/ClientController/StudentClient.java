@@ -41,7 +41,7 @@ public class StudentClient{
 	/**
 	 * The main GUI
 	 */
-	private MenuGUI view;
+	private MenuGUI menu;
 	/**
 	 * Constructor for StudentClient 
 	 * @param serverName Name of the server
@@ -57,6 +57,7 @@ public class StudentClient{
 			e.printStackTrace();
 		}
 	}
+	
 	/**
 	 * Communication with the server
 	 */
@@ -70,16 +71,21 @@ public class StudentClient{
 				line = stdIn.readLine(); //read line from the user (i.e from the keyboard)
 				socketOut.println(line);
 				response = socketIn.readLine(); //read response from the socket
+				
 				if(!response.equals("No student with the ID entered matched. Please try again")) {
-					view = new MenuGUI();
+					menu = new MenuGUI(socketOut, socketIn);
+					System.out.println("System Response: " + response); 
+					//StudentController sc = new StudentController(menu, aSocket, socketOut, socketIn, stdIn);
 				}
-				System.out.println("System Response: " + response); 
+				else 
+					System.out.println("System Response: " + response); 
 			}
 		}catch(IOException e) {
 			e.getStackTrace();
 		}
 		closeAll();
 	}
+	
 	/**
 	 * Closes the client sockets
 	 */
