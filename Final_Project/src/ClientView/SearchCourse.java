@@ -110,7 +110,9 @@ public class SearchCourse {
 				CourseCatalogue cat = new CourseCatalogue();
 				String[] temp = textField.getText().split("\\s+");
 				String name = temp[0].toUpperCase();
-				int num = Integer.parseInt(temp[1]);
+				int num = -1;
+				if(temp.length >= 2)
+					num = Integer.parseInt(temp[1]);
 				
 				Course c = cat.searchCat(name, num); 
 				
