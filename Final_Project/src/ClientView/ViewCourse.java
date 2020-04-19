@@ -1,5 +1,6 @@
 package ClientView;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,7 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import ServerModel.Course;
 
 /**
  * This class is used to display information about a specific course to the user using a GUI.
@@ -27,7 +32,7 @@ public class ViewCourse {
 	/**
 	 * Displays text on the GUI (asks user what he/she would like to search)
 	 */
-	JLabel text;
+	JTextArea text;
 
 	JButton backButton;
 
@@ -42,7 +47,7 @@ public class ViewCourse {
 	 * @param s the search course menu GUI which will be set to visible once the 
 	 * information displayed is closed.
 	 */
-	ViewCourse(MenuGUI m, SearchCourse s) {
+	ViewCourse(MenuGUI m, SearchCourse s, Course c) {
 		search = s;
 		search.frame.setVisible(false);
 		menu = m;
@@ -50,30 +55,37 @@ public class ViewCourse {
 		textPanel = new JPanel();
 
 		// gather input from the socket using MenuGUI socket.
-		text = new JLabel("Information about the course retrieved from the socket");
+		if(c != null) {
+			String temp = c.toString();
+			text = new JTextArea(temp);
+		}
+		else
+			text = new JTextArea("Course Not Found");
 
 		backButton = new JButton("Back");
 
 		SearchCourseListener listener = new SearchCourseListener();
 
 		backButton.addActionListener(listener);
-
-		textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.PAGE_AXIS));
-		textPanel.add(text);
+		
+		JScrollPane scroll = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll.setPreferredSize(new Dimension(200, 200));
+		
+		textPanel.add(scroll);
 		textPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-
+		
 		buttonPanel = new JPanel();
 		buttonPanel.add(backButton);
-
+		
 		combinedPanel = new JPanel();
 		combinedPanel.setLayout(new BoxLayout(combinedPanel, BoxLayout.PAGE_AXIS));
 		combinedPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 		combinedPanel.add(textPanel);
 		combinedPanel.add(buttonPanel);
-
+		
 		frame.add(combinedPanel);
 		frame.pack();
-
+		
 		frame.setVisible(true);
 	}
 

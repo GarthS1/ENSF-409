@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ServerModel.Course;
+import ServerModel.CourseCatalogue;
 
 /**
  * This class creates a GUI for searching course. When the user enters a course, another window will pop up either showing the
@@ -106,7 +107,14 @@ public class SearchCourse {
 				//Submit course num
 				//If null display error
 				//else display course info (will be read as a string)
-				new ViewCourse(menu, sc);
+				CourseCatalogue cat = new CourseCatalogue();
+				String[] temp = textField.getText().split("\\s+");
+				String name = temp[0].toUpperCase();
+				int num = Integer.parseInt(temp[1]);
+				
+				Course c = cat.searchCat(name, num); 
+				
+				new ViewCourse(menu, sc, c);
 				 
 			} else if(e.getSource() == cancelButton) {
 				frame.dispose();
