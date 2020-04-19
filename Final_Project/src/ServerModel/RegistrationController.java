@@ -84,16 +84,16 @@ public class RegistrationController implements Runnable{
 						st.removeRegistration(removeId);
 						break;
 					case "view All courses in catalog":
-						socketOut.print(cat);
+						socketOut.println(cat);
 						break;
 					case "view all courses taken by student":
-						socketOut.print(st.printCourses());
+						socketOut.println(st.printCourses());
 						break;
 					case "quit":
 						exit = true;
 						break;
 					default:
-						socketOut.print("Invalid input enetered. Please enter a different input.");
+						socketOut.println("Invalid input enetered. Please enter a different input.");
 					}
 				}
 			} catch (IOException e) {

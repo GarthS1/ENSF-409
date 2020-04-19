@@ -48,7 +48,7 @@ public class ViewAllStudentCourses {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		if(temp != null)
+		if(temp != "")
 			text = new JTextArea(temp);
 		else
 			text = new JTextArea("Not Enrolled in any Course");

@@ -103,15 +103,11 @@ public class SearchCourse {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == searchButton) {
-				//Submit course name
-				//Submit course num
-				//If null display error
-				//else display course info (will be read as a string)
 				CourseCatalogue cat = new CourseCatalogue();
 				String[] temp = textField.getText().split("\\s+");
 				String name = temp[0].toUpperCase();
 				int num = -1;
-				if(temp.length >= 2)
+				if(temp.length == 2)
 					num = Integer.parseInt(temp[1]);
 				
 				Course c = cat.searchCat(name, num); 

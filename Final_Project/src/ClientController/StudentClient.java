@@ -76,7 +76,7 @@ public class StudentClient{
 		}catch(IOException e) {
 			e.getStackTrace();
 		}
-		closeAll();
+//		closeAll();
 	}
 	
 	/**
