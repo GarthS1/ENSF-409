@@ -35,14 +35,6 @@ public class StudentClient{
 	 */
 	private BufferedReader stdIn;
 	/**
-	 * The student
-	 */
-	private Student student;
-	/**
-	 * The main GUI
-	 */
-	private MenuGUI menu;
-	/**
 	 * Constructor for StudentClient 
 	 * @param serverName Name of the server
 	 * @param portNum The port number
@@ -66,6 +58,7 @@ public class StudentClient{
 		String response = "";
 		
 		try {
+			//MAKE THIS GUI
 			while(true) {
 				System.out.println("Please enter a student ID: ");
 				line = stdIn.readLine(); //read line from the user (i.e from the keyboard)
@@ -73,9 +66,9 @@ public class StudentClient{
 				response = socketIn.readLine(); //read response from the socket
 				
 				if(!response.equals("No student with the ID entered matched. Please try again")) {
-					menu = new MenuGUI(socketOut, socketIn);
+					MenuGUI menu = new MenuGUI(socketOut, socketIn);
 					System.out.println("System Response: " + response); 
-					//StudentController sc = new StudentController(menu, aSocket, socketOut, socketIn, stdIn);
+					break;
 				}
 				else 
 					System.out.println("System Response: " + response); 

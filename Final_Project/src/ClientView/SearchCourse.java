@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import ServerModel.Course;
+
 /**
  * This class creates a GUI for searching course. When the user enters a course, another window will pop up either showing the
  * information about the course or that the course was not found.
@@ -100,9 +102,12 @@ public class SearchCourse {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == searchButton) {
-//				 if(course is valid) {
-					 new ViewCourse(menu, sc);
-//				 }
+				//Submit course name
+				//Submit course num
+				//If null display error
+				//else display course info (will be read as a string)
+				new ViewCourse(menu, sc);
+				 
 			} else if(e.getSource() == cancelButton) {
 				frame.dispose();
 				menu.frame.setVisible(true);
