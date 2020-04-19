@@ -1,4 +1,6 @@
 package ClientView;
+import java.net.Socket;
+
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -20,11 +22,14 @@ public class MenuGUI {
 	 */
 	JButton searchCourseButton, addCourseButton, removeCourseButton, viewAllCatalogueButton, viewAllStudentCoursesButton, quitButton;
 	private JPanel panel;
+	private Socket outSocket;
+	
 	
 	/**
 	 * Creates a GUI for the main menu for the convenience of the user.
 	 */
-	public MenuGUI(){
+	public MenuGUI(Socket out){
+		outSocket = out;
 		frame = new JFrame();
 		panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));

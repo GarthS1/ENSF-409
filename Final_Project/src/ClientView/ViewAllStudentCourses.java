@@ -1,4 +1,5 @@
 package ClientView;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
 
 /**
  * This class creates a GUI for viewing all courses that a student took in the past.
@@ -25,25 +29,30 @@ public class ViewAllStudentCourses {
 	/**
 	 * List of all courses that the student previously took.
 	 */
-	JLabel text;
+	JTextArea text;
 	
 	JButton cancelButton;
 	
 	ViewAllStudentCourses(MenuGUI m){
 		menu = m;
 		frame = new JFrame();
-		
 		textPanel = new JPanel();
-		
+
 		ViewPastCoursesListener listener = new ViewPastCoursesListener();
 		
-		//List of all courses student took here
-		text = new JLabel("nothing yet");
+		//Replace this with information from the socket.
+		String temp = "";
+		for(int i = 0; i < 10; i++) {
+			temp += "course " + i + "\n";
+		}
 		
+		text = new JTextArea(temp);
+		JScrollPane scroll = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll.setPreferredSize(new Dimension(300, 200));
 		cancelButton = new JButton("Back");
 		cancelButton.addActionListener(listener);
 		
-		textPanel.add(text);
+		textPanel.add(scroll);
 		textPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 		
 		buttonPanel = new JPanel();

@@ -41,11 +41,17 @@ public class SearchCourse {
 	MenuGUI menu;
 	
 	/**
+	 * This.
+	 */
+	SearchCourse sc;
+	
+	/**
 	 * Creates a new GUI which prompts user to enter a course he/she would like to search for.
 	 * @param m is the main menu GUI which will be set to visible once the search course ends.
 	 */
 	SearchCourse(MenuGUI m) {
 		menu = m;
+		sc = this;
 		frame = new JFrame();
 		textPanel = new JPanel();
 		
@@ -94,8 +100,9 @@ public class SearchCourse {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == searchButton) {
-				 JOptionPane.showConfirmDialog(null, "test",
-							"suffering", JOptionPane.YES_NO_OPTION);
+//				 if(course is valid) {
+					 new ViewCourse(menu, sc);
+//				 }
 			} else if(e.getSource() == cancelButton) {
 				frame.dispose();
 				menu.frame.setVisible(true);

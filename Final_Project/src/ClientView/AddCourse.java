@@ -80,8 +80,11 @@ public class AddCourse {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == addButton) {
-				 JOptionPane.showConfirmDialog(null, "test",
-							"suffering", JOptionPane.YES_NO_OPTION);
+				 int result = JOptionPane.showConfirmDialog(null, "would you like to add this course?",
+							"confirmation", JOptionPane.YES_NO_OPTION);
+				 if(result == JOptionPane.YES_OPTION) {
+					 // send something through socket?
+				 }
 			} else if(e.getSource() == cancelButton) {
 				frame.dispose();
 				menu.frame.setVisible(true);

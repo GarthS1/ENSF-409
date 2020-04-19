@@ -92,8 +92,12 @@ class RemoveCourse {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == removeButton) {
-				 JOptionPane.showConfirmDialog(null, "test",
-							"suffering", JOptionPane.YES_NO_OPTION);
+				String temp = "Are you sure you want to remove " + (String)dropDownMenu.getSelectedItem() + "?";
+				 int result = JOptionPane.showConfirmDialog(null, temp,
+						 "confirmation", JOptionPane.YES_NO_OPTION);
+				 if(result == JOptionPane.YES_OPTION) {
+					 //send some information to the socket and remove class.
+				 }
 			} else if(e.getSource() == cancelButton) {
 				frame.dispose();
 				menu.frame.setVisible(true);
