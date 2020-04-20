@@ -3,6 +3,7 @@ package ClientView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -101,9 +102,19 @@ public class AddCourse {
 						menu.getOutSocket().println(temp[0].toUpperCase());
 						menu.getOutSocket().println(temp[1]);
 						menu.getOutSocket().println(2);
+						try {
+							String a = menu.getInSocket().readLine();
+							System.out.println(a);
+							if(a.equals("true")) {
+								JOptionPane.showConfirmDialog(null, "Course Successfully added!", "success",
+										JOptionPane.YES_OPTION);
+							} else
+								JOptionPane.showMessageDialog(null, "Course registration failed.", "fail", JOptionPane.ERROR_MESSAGE);
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
 						
-						JOptionPane.showConfirmDialog(null, "Course Successfully added!", "success",
-								JOptionPane.YES_OPTION);
+						
 					}
 					
 				}

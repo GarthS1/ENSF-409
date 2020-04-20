@@ -71,7 +71,7 @@ public class RegistrationController implements Runnable {
 					switch (action) {
 					case "search catalogue courses":
 						String course = socketIn.readLine();
-						if (course == "Cancel")
+						if (course.equals("Cancel"))
 							break;
 						int courseId = Integer.parseInt(socketIn.readLine());
 						Course courseSearched = cat.searchCat(course, courseId);
@@ -81,13 +81,12 @@ public class RegistrationController implements Runnable {
 						while (true) {
 							Registration addedCourse = new Registration();
 							String course1 = socketIn.readLine();
-							if (course1 == "Cancel")
+							if (course1.equals("Cancel"))
 								break;
 							int courseId1 = Integer.parseInt(socketIn.readLine());
 							Course courseSearched1 = cat.searchCat(course1, courseId1);
-							int section = Integer.parseInt(socketIn.readLine()) - 1; // need to subtract one to get
-																						// effective address
-							addedCourse.completeRegistration(st, courseSearched1.getCourseOfferingAt(section));
+							int section = Integer.parseInt(socketIn.readLine()) - 1; // need to subtract one to get effective address
+							socketOut.println(addedCourse.completeRegistration(st, courseSearched1.getCourseOfferingAt(section)));
 						}
 						break;
 					case "remove course from student course":
