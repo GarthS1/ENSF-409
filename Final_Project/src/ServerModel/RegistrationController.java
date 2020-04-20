@@ -75,7 +75,7 @@ public class RegistrationController implements Runnable {
 							break;
 						int courseId = Integer.parseInt(socketIn.readLine());
 						Course courseSearched = cat.searchCat(course, courseId);
-						socketOut.println(courseSearched);
+						socketOut.println(courseSearched.toString().replace("\n", "."));
 						break;
 					case "add course to student course":
 						while (true) {

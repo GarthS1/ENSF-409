@@ -1,6 +1,7 @@
 package ClientView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -103,16 +104,19 @@ public class SearchCourse {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == searchButton) {
-				CourseCatalogue cat = new CourseCatalogue();
 				String[] temp = textField.getText().split("\\s+");
-				String name = temp[0].toUpperCase();
-				int num = -1;
+				
 				if(temp.length == 2)
-					num = Integer.parseInt(temp[1]);
+					menu.getOutSocket().println(temp[0].toUpperCase());
+					menu.getOutSocket().println(temp[1]);
 				
-				Course c = cat.searchCat(name, num); 
-				
-				new ViewCourse(menu, sc, c);
+				String course = null;
+				try {
+					course = menu.getInSocket().readLine();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				new ViewCourse(menu, sc, course);
 				 
 			} else if(e.getSource() == cancelButton) {
 				menu.getOutSocket().println("Cancel");

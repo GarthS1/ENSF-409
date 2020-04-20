@@ -47,7 +47,7 @@ public class ViewCourse {
 	 * @param s the search course menu GUI which will be set to visible once the 
 	 * information displayed is closed.
 	 */
-	ViewCourse(MenuGUI m, SearchCourse s, Course c) {
+	ViewCourse(MenuGUI m, SearchCourse s, String course) {
 		search = s;
 		search.frame.setVisible(false);
 		menu = m;
@@ -55,12 +55,13 @@ public class ViewCourse {
 		textPanel = new JPanel();
 
 		// gather input from the socket using MenuGUI socket.
-		if(c != null) {
-			String temp = c.toString();
+		String temp = "";
+		if(course != null) {
+			temp = course.replace(".", "\n");
 			text = new JTextArea(temp);
 		}
 		else
-			text = new JTextArea("Course Not Found");
+			text = new JTextArea("No Course Found");
 
 		backButton = new JButton("Back");
 
@@ -101,6 +102,7 @@ public class ViewCourse {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == backButton) {
+				menu.getOutSocket().println("search catalogue courses");
 				frame.dispose();
 				search.frame.setVisible(true);
 			}
