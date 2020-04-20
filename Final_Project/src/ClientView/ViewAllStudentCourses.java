@@ -42,7 +42,6 @@ public class ViewAllStudentCourses {
 		
 		ViewPastCoursesListener listener = new ViewPastCoursesListener();
 		
-		//Replace this with information from the socket.
 		try {
 			temp = menu.getInSocket().readLine().replace("@", "\n");
 		} catch (IOException e) {

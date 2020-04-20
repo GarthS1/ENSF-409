@@ -59,10 +59,7 @@ public class StudentClient{
 		String response = "";
 		
 		try {
-			//MAKE THIS GUI
 			while(true) {
-				//System.out.println("Please enter a student ID: ");
-				//line = stdIn.readLine(); //read line from the user (i.e from the keyboard)
 				line = JOptionPane.showInputDialog("Please enter a student ID: ");
 				socketOut.println(line);
 				response = socketIn.readLine(); //read response from the socket
@@ -77,20 +74,6 @@ public class StudentClient{
 			}
 		}catch(IOException e) {
 			e.getStackTrace();
-		}
-//		closeAll();
-	}
-	
-	/**
-	 * Closes the client sockets
-	 */
-	private void closeAll() {
-		try {
-			stdIn.close();
-			socketIn.close();
-			socketOut.close();
-		} catch (IOException e) {
-			System.out.println("Closing error: " + e.getMessage());
 		}
 	}
 	
