@@ -51,6 +51,7 @@ public class RegistrationController implements Runnable {
 				line = socketIn.readLine();
 				
 				if(line.equals("admin")) {
+					socketOut.println("Admin found. Logging in.");
 					studentFound = true;
 					runAdmin();
 				}
