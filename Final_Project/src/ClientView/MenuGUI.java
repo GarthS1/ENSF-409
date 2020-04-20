@@ -30,6 +30,8 @@ public class MenuGUI {
 	
 	/**
 	 * Creates a GUI for the main menu for the convenience of the user.
+	 * @param out output stream 
+	 * @param in input stream
 	 */
 	public MenuGUI(PrintWriter out, BufferedReader in){
 		outSocket = out;

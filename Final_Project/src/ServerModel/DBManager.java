@@ -193,6 +193,7 @@ public class DBManager implements IDBCredentials{
 	}
 	/**
 	 * Main function to generate the tables needed in the database
+	 * @param args needed to work 
 	 */
 	public static void main(String args[]) {
 		DBManager mydb = new DBManager();

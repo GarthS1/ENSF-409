@@ -37,6 +37,7 @@ public class Student {
 	/**
 	 * Adds a registration to the student's list 
 	 * @param registration Registration to be added
+	 * @return if registration was successful  
 	 */
 	public boolean addRegistration(Registration registration) {
 		boolean sameName = true;
@@ -53,7 +54,7 @@ public class Student {
 	}
 	/**
 	 * Removes a registration to the student's list 
-	 * @param registration Registration to be removed
+	 * @param index Registration to be removed
 	 */
 	public void removeRegistration(int index) {
 		if(index >= 0 && studentRegList.size() > index) 

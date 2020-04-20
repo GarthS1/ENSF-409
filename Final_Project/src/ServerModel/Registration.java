@@ -21,6 +21,7 @@ public class Registration {
 	 * Completes the registration of the course 
 	 * @param st Student registering 
 	 * @param of Course being registered for 
+	 * @return returns if addRegistration works
 	 */
 	public boolean completeRegistration (Student st, CourseOffering of) {
 		theStudent = st;
@@ -29,6 +30,7 @@ public class Registration {
 	}
 	/**
 	 * Adds the registration to the offering and student object 
+	 *  @return returns true if it works
 	 */
 	private boolean addRegistration () {
 		boolean works = theStudent.addRegistration(this);

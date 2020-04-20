@@ -46,6 +46,7 @@ public class ViewCourse {
 	 * @param m the main menu GUI
 	 * @param s the search course menu GUI which will be set to visible once the 
 	 * information displayed is closed.
+	 * @param course the course viewed
 	 */
 	ViewCourse(MenuGUI m, SearchCourse s, String course) {
 		search = s;
