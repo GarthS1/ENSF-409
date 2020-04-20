@@ -11,6 +11,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  * The client that runs the GUI and connects to the server
@@ -60,8 +61,9 @@ public class StudentClient{
 		try {
 			//MAKE THIS GUI
 			while(true) {
-				System.out.println("Please enter a student ID: ");
-				line = stdIn.readLine(); //read line from the user (i.e from the keyboard)
+				//System.out.println("Please enter a student ID: ");
+				//line = stdIn.readLine(); //read line from the user (i.e from the keyboard)
+				line = JOptionPane.showInputDialog("Please enter a student ID: ");
 				socketOut.println(line);
 				response = socketIn.readLine(); //read response from the socket
 				
@@ -71,7 +73,7 @@ public class StudentClient{
 					break;
 				}
 				else 
-					System.out.println("System Response: " + response); 
+					JOptionPane.showConfirmDialog(null, "invalid student ID. please try again.", "Error", JOptionPane.OK_OPTION, JOptionPane.ERROR_MESSAGE);
 			}
 		}catch(IOException e) {
 			e.getStackTrace();

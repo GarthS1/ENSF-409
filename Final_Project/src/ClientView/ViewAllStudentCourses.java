@@ -44,11 +44,11 @@ public class ViewAllStudentCourses {
 		
 		//Replace this with information from the socket.
 		try {
-			temp = menu.getInSocket().readLine();
+			temp = menu.getInSocket().readLine().replace(".", "\n");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		if(temp != "")
+		if(temp.length() != 0)
 			text = new JTextArea(temp);
 		else
 			text = new JTextArea("Not Enrolled in any Course");

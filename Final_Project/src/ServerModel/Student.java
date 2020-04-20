@@ -61,7 +61,7 @@ public class Student {
 	public String printCourses() {
 		String s = "";
 		for(int i = 0; i < studentRegList.size(); i++) {
-			s += studentRegList.get(i) + "\n";
+			s += studentRegList.get(i) + ".";
 		}
 		return s;
 	}

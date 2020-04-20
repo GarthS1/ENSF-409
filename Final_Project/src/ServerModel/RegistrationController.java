@@ -71,12 +71,12 @@ public class RegistrationController implements Runnable{
 						socketOut.println(courseSearched);
 						break;
 					case "add course to student course":
-					  Registration addedCourse = new Registration ();
+					    Registration addedCourse = new Registration ();
 						String course1 = socketIn.readLine();
 						int courseId1 = Integer.parseInt(socketIn.readLine());
 						Course courseSearched1 = cat.searchCat(course1, courseId1);
 						int section = Integer.parseInt(socketIn.readLine()) - 1; //need to subtract one to get effective address 
-					  addedCourse.completeRegistration(st, courseSearched1.getCourseOfferingAt(section));
+					    addedCourse.completeRegistration(st, courseSearched1.getCourseOfferingAt(section));
 						break;
 					case "remove course from student course":
 						socketOut.println(st.printCourses());
@@ -87,7 +87,7 @@ public class RegistrationController implements Runnable{
 						socketOut.println(cat);
 						break;
 					case "view all courses taken by student":
-						socketOut.println(st.printCourses());
+						socketOut.println(st.printCourses().replace("\n", "."));
 						break;
 					case "quit":
 						exit = true;

@@ -98,9 +98,9 @@ public class AddCourse {
 				if (result == JOptionPane.YES_OPTION) {
 					String[] temp = textField.getText().split("\\s+");
 					if (temp.length == 2) {
-						menu.getOutSocket().println(temp[0]);
+						menu.getOutSocket().println(temp[0].toUpperCase());
 						menu.getOutSocket().println(temp[1]);
-						menu.getOutSocket().println(1);
+						menu.getOutSocket().println(2);
 						
 						JOptionPane.showConfirmDialog(null, "Course Successfully added!", "success",
 								JOptionPane.YES_OPTION);
