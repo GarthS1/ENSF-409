@@ -22,17 +22,19 @@ public class Registration {
 	 * @param st Student registering 
 	 * @param of Course being registered for 
 	 */
-	public void completeRegistration (Student st, CourseOffering of) {
+	public boolean completeRegistration (Student st, CourseOffering of) {
 		theStudent = st;
 		theOffering = of;
-		addRegistration ();
+		return addRegistration ();
 	}
 	/**
 	 * Adds the registration to the offering and student object 
 	 */
-	private void addRegistration () {
-		theStudent.addRegistration(this);
-		theOffering.addRegistration(this);
+	private boolean addRegistration () {
+		boolean works = theStudent.addRegistration(this);
+		if(works)
+			theOffering.addRegistration(this);
+		return works;
 	}
 	
 	public Student getTheStudent() {

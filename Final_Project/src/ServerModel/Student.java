@@ -38,11 +38,13 @@ public class Student {
 	 * Adds a registration to the student's list 
 	 * @param registration Registration to be added
 	 */
-	public void addRegistration(Registration registration) {
-		if(studentRegList.size() != 6)
+	public boolean addRegistration(Registration registration) {
+		if(studentRegList.size() != 6 && !studentRegList.contains(registration)) {
 			studentRegList.add(registration);
+			return true;
+		}
 		else
-			System.out.println("Unable to register as you already registered for six course");
+			return false;
 	}
 	/**
 	 * Removes a registration to the student's list 
