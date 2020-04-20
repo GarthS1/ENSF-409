@@ -99,6 +99,7 @@ class RemoveCourse {
 						//Send the integer vaule to database  
 				 }
 			} else if(e.getSource() == cancelButton) {
+				menu.getOutSocket().println("Cancel");
 				frame.dispose();
 				menu.frame.setVisible(true);
 			}

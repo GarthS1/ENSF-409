@@ -115,6 +115,7 @@ public class SearchCourse {
 				new ViewCourse(menu, sc, c);
 				 
 			} else if(e.getSource() == cancelButton) {
+				menu.getOutSocket().println("Cancel");
 				frame.dispose();
 				menu.frame.setVisible(true);
 			}

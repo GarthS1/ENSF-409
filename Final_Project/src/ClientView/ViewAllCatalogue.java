@@ -50,7 +50,6 @@ public class ViewAllCatalogue {
 		String temp = "";
 		try {
 			temp = menu.getInSocket().readLine();
-			System.out.println(temp.length());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
