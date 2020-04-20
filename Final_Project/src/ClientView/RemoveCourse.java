@@ -1,6 +1,7 @@
 package ClientView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -24,10 +25,6 @@ class RemoveCourse {
 	JPanel buttonPanel;
 	JPanel combinedPanel;
 	
-	/**
-	 * Should contain the list of courses the student is currently enrolled in.
-	 */
-	String [] temp;
 	
 	/**
 	 * A drop-down menu displaying what the courses the student is currently enrolled in.
@@ -49,8 +46,13 @@ class RemoveCourse {
 		
 		dropDownPanel = new JPanel();
 		//change this with information from the database.
-		String [] temp = {"a", "b", "c"};
-		dropDownMenu = new JComboBox<String>(temp);
+		try {
+			String a = menu.getInSocket().readLine();
+			String [] temp = a.split("@");
+			dropDownMenu = new JComboBox<String>(temp);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		text = new JLabel("What course would you like to remove?");
 		
 		removeButton = new JButton("Remove");
@@ -96,7 +98,10 @@ class RemoveCourse {
 				 int result = JOptionPane.showConfirmDialog(null, temp,
 						 "confirmation", JOptionPane.YES_NO_OPTION);
 				 if(result == JOptionPane.YES_OPTION) {
-						//Send the integer vaule to database  
+					 menu.getOutSocket().println(dropDownMenu.getSelectedIndex());
+					 JOptionPane.showMessageDialog(null, "Successfully removed course!");
+					 frame.dispose();
+					 menu.frame.setVisible(true);
 				 }
 			} else if(e.getSource() == cancelButton) {
 				menu.getOutSocket().println("Cancel");

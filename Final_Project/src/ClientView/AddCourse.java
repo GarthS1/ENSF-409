@@ -94,29 +94,32 @@ public class AddCourse {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == addButton) {
 				String answer = textField.getText();
-				int result = JOptionPane.showConfirmDialog(null, "would you like to add " + answer, "confirmation",
-						JOptionPane.YES_NO_OPTION);
-				if (result == JOptionPane.YES_OPTION) {
-					String[] temp = textField.getText().split("\\s+");
-					if (temp.length == 2) {
-						menu.getOutSocket().println(temp[0].toUpperCase());
-						menu.getOutSocket().println(temp[1]);
-						menu.getOutSocket().println(2);
-						try {
-							String a = menu.getInSocket().readLine();
-							System.out.println(a);
-							if(a.equals("true")) {
-								JOptionPane.showConfirmDialog(null, "Course Successfully added!", "success",
-										JOptionPane.YES_OPTION);
-							} else
-								JOptionPane.showMessageDialog(null, "Course registration failed.", "fail", JOptionPane.ERROR_MESSAGE);
-						} catch (IOException e1) {
-							e1.printStackTrace();
+				String temp2 = JOptionPane.showInputDialog(null, "Which section would you like to join?");
+				if (temp2 != null) {
+					int lectureNum = Integer.parseInt(temp2);
+					int result = JOptionPane.showConfirmDialog(null, "would you like to add " + answer, "confirmation",
+							JOptionPane.YES_NO_OPTION);
+					if (result == JOptionPane.YES_OPTION) {
+						String[] temp = textField.getText().split("\\s+");
+						if (temp.length == 2) {
+							menu.getOutSocket().println(temp[0].toUpperCase());
+							menu.getOutSocket().println(temp[1]);
+
+							menu.getOutSocket().println(lectureNum);
+							try {
+								String a = menu.getInSocket().readLine();
+								if (a.equals("true")) {
+									JOptionPane.showMessageDialog(null, "Course Successfully added!");
+								} else
+									JOptionPane.showMessageDialog(null, "Course registration failed.", "fail",
+											JOptionPane.ERROR_MESSAGE);
+							} catch (IOException e1) {
+								e1.printStackTrace();
+							}
+
 						}
-						
-						
 					}
-					
+
 				}
 			} else if (e.getSource() == cancelButton) {
 				menu.getOutSocket().println("Cancel");

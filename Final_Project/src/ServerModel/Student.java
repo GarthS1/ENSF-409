@@ -63,7 +63,7 @@ public class Student {
 	public String printCourses() {
 		String s = "";
 		for(int i = 0; i < studentRegList.size(); i++) {
-			s += studentRegList.get(i) + ".";
+			s += studentRegList.get(i).getTheOffering().getTheCourse().getCourseName() + studentRegList.get(i).getTheOffering().getTheCourse().getCourseNum() + "@";
 		}
 		return s;
 	}

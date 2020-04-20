@@ -44,7 +44,7 @@ public class ViewAllStudentCourses {
 		
 		//Replace this with information from the socket.
 		try {
-			temp = menu.getInSocket().readLine().replace(".", "\n");
+			temp = menu.getInSocket().readLine().replace("@", "\n");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
