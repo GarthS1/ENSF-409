@@ -73,8 +73,6 @@ public class RegistrationController implements Runnable {
 	}
 	
 	private void runAdmin() {
-		boolean exit = false; // exit condition for the loop
-		while (!exit) {
 			String courseName;
 			try {
 				courseName = socketIn.readLine();
@@ -90,7 +88,6 @@ public class RegistrationController implements Runnable {
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
-			}
 		}
 	}
 
