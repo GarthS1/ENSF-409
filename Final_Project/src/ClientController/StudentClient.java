@@ -60,11 +60,18 @@ public class StudentClient{
 		
 		try {
 			while(true) {
-				line = JOptionPane.showInputDialog("Please enter a student ID: ");
-				socketOut.println(line);
+				line = JOptionPane.showInputDialog("Please enter a student ID or type \"admin\": ");
+				socketOut.println(line.toLowerCase());
 				response = socketIn.readLine(); //read response from the socket
 				
-				if(!response.equals("No student with the ID entered matched. Please try again")) {
+				//Admin log in
+				if(response.equals("Admin found. Logging in.")) {
+					AdminGUI adminMenu = new AdminGUI(socketIn, socketOut);
+					adminMenu.getInfo();
+					System.out.println("System Response: " + response);
+					break;
+				}	//Student log in
+				else if(response.equals("Student found. Logging in.")) {
 					MenuGUI menu = new MenuGUI(socketOut, socketIn);
 					System.out.println("System Response: " + response); 
 					break;
