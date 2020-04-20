@@ -47,7 +47,14 @@ public class ViewAllCatalogue {
 		
 		//Replace this with information from the socket.
 		
-		String temp = cat.toString();
+		String temp = "";
+		try {
+			temp = menu.getInSocket().readLine();
+			System.out.println(temp.length());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		temp = temp.replace(".", "\n");
 		
 		text = new JTextArea(temp);
 		JScrollPane scroll = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);

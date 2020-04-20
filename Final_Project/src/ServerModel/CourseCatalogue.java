@@ -77,10 +77,10 @@ public class CourseCatalogue {
 	}
 	@Override
 	public String toString () {
-		String st = "All courses in the catalogue: \n";
+		String st = "All courses in the catalogue: .";
 		for (Course c : courseList) {
-			st += c;  //This line invokes the toString() method of Course
-			st += "\n";
+			st += c.toString();  //This line invokes the toString() method of Course
+			st += ".";
 		}
 		return st;
 	}

@@ -84,7 +84,7 @@ public class RegistrationController implements Runnable{
 						st.removeRegistration(removeId);
 						break;
 					case "view All courses in catalog":
-						socketOut.println(cat);
+						socketOut.println(cat.toString().replace("\n", "."));
 						break;
 					case "view all courses taken by student":
 						socketOut.println(st.printCourses().replace("\n", "."));
