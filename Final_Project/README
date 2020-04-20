@@ -1,0 +1,13 @@
+Jiho Kim jiho.kim@ucalgary.ca
+Eddie Kim eddie.kim1@ucalgary.ca
+Garth Slaney garth.slaney@ucalgary.ca
+
+1. Run DBManager. It will make the appropriate tables. The input.txt file from the pre-project is needed to generate the students.
+As well there must a an mySql database called mydb.
+2. Run RegistrationServer.
+3. Run StudentClient.
+
+Deploy the project; run the server and client on separate machines (5 marks) As shown in the video it is possible to run on two seperate machines
+Maintain a list of users and develop login/out feature (5 marks) It will use the data from the student table to log users in based on ID number. 
+Create a separate GUI for an“Admin” with the functionality of creating new courses(10marks) when logging in as admin can add new courses or if
+the course already exists can add a new course offering 

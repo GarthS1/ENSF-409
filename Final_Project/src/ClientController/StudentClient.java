@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.Socket;
 import javax.swing.JOptionPane;
 
@@ -74,7 +75,8 @@ public class StudentClient{
 	}
 	
 	public static void main(String[] args) throws IOException {
-	  StudentClient myClient = new StudentClient("192.168.0.12", 9898);
+		InetAddress inetAddress = InetAddress.getLocalHost();
+    StudentClient myClient = new StudentClient(inetAddress.getHostAddress(), 9898);
 		myClient.communicate();	
 	}
 }
