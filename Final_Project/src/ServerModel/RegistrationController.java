@@ -76,7 +76,7 @@ public class RegistrationController implements Runnable{
 						int courseId1 = Integer.parseInt(socketIn.readLine());
 						Course courseSearched1 = cat.searchCat(course1, courseId1);
 						int section = Integer.parseInt(socketIn.readLine()) - 1; //need to subtract one to get effective address 
-					  addedCourse.completeRegistration(st, courseSearched1.getCourseOfferingAt(section));
+					    addedCourse.completeRegistration(st, courseSearched1.getCourseOfferingAt(section));
 						break;
 					case "remove course from student course":
 						socketOut.println(st.printCourses());
@@ -84,7 +84,7 @@ public class RegistrationController implements Runnable{
 						st.removeRegistration(removeId);
 						break;
 					case "view All courses in catalog":
-						socketOut.println(cat);
+						socketOut.println(cat.toString().replace("\n", "."));
 						break;
 					case "view all courses taken by student":
 						socketOut.println(st.printCourses());
