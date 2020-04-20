@@ -111,7 +111,8 @@ public class AddCourse {
 								if (a.equals("true")) {
 									JOptionPane.showMessageDialog(null, "Course Successfully added!");
 								} else
-									JOptionPane.showMessageDialog(null, "Course registration failed.", "fail",
+									JOptionPane.showMessageDialog(null, "Course registration failed. You may have more than "
+											+ "6 courses or have already registered.", "fail",
 											JOptionPane.ERROR_MESSAGE);
 							} catch (IOException e1) {
 								e1.printStackTrace();

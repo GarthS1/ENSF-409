@@ -39,10 +39,15 @@ public class Student {
 	 * @param registration Registration to be added
 	 */
 	public boolean addRegistration(Registration registration) {
-		if(studentRegList.size() != 6 && !studentRegList.contains(registration)) {
-			studentRegList.add(registration);
-			return true;
-		}
+		boolean sameName = true;
+        for(Registration r : studentRegList)
+            if(r.getTheOffering().getTheCourse().getCourseName().contentEquals(registration.getTheOffering().getTheCourse().getCourseName()) &&
+                    r.getTheOffering().getTheCourse().getCourseNum()== registration.getTheOffering().getTheCourse().getCourseNum())
+                sameName = false;
+        if(studentRegList.size() != 6 && sameName) {
+            studentRegList.add(registration);
+            return true;
+        }
 		else
 			return false;
 	}
