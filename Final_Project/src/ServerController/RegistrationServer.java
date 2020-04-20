@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
@@ -80,6 +81,7 @@ public class RegistrationServer {
 	
 	public static void main(String[] args) throws IOException {
 		RegistrationServer myServer = new RegistrationServer (9898);
+		System.out.println("Your current IP address : " + InetAddress.getLocalHost());
 		myServer.runServer();
 	}
 }

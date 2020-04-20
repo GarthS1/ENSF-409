@@ -78,7 +78,7 @@ public class StudentClient{
 	}
 	
 	public static void main(String[] args) throws IOException {
-	  StudentClient myClient = new StudentClient("localhost", 9898);
+	  StudentClient myClient = new StudentClient("DESKTOP-UDV4A7J/192.168.0.12", 9898);
 		myClient.communicate();	
 	}
 }
