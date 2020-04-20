@@ -49,19 +49,51 @@ public class RegistrationController implements Runnable {
 		while (!studentFound) {
 			try {
 				line = socketIn.readLine();
-				st = stu.searchStudent(line); // makes sure valid ID is entered before running
-				if (st != null) {
-					socketOut.println("Student found. Logging in.");
+				
+				if(line.equals("admin")) {
 					studentFound = true;
-				} else {
-					socketOut.println("No student with the ID entered matched. Please try again"); // error message if
-																									// no ID matches
+					runAdmin();
+				}
+				else {
+					st = stu.searchStudent(line); // makes sure valid ID is entered before running
+					if (st != null) {
+						socketOut.println("Student found. Logging in.");
+						studentFound = true;
+						runStudent();
+					} else {
+						socketOut.println("No student with the ID entered matched. Please try again"); // error message if
+																										// no ID matches
+					}
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	private void runAdmin() {
+		boolean exit = false; // exit condition for the loop
+		while (!exit) {
+			String courseName;
+			try {
+				courseName = socketIn.readLine();
+				int courseNum = Integer.parseInt(socketIn.readLine());
+				Course myCourse = cat.searchCat(courseName, courseNum);
+				if (myCourse != null) {
+					cat.createCourseOffering(myCourse, Integer.parseInt(socketIn.readLine()), Integer.parseInt(socketIn.readLine()));
+				}
+				else {
+					cat.getCourseList().add(new Course(courseName, courseNum, null));
+					cat.createCourseOffering(cat.searchCat(courseName, courseNum), Integer.parseInt(socketIn.readLine()), 
+							Integer.parseInt(socketIn.readLine()));
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
+	private void runStudent() {
 		String action;
 		boolean exit = false; // exit condition for the loop
 		while (!exit) {

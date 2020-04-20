@@ -32,6 +32,8 @@ public class AdminGUI {
 		out.println(name);
 		String courseNum = JOptionPane.showInputDialog(null, "what is the course number?");
 		out.println(courseNum);
+		String lectureNum = JOptionPane.showInputDialog(null, "What is the lecture number?");
+    out.println(lectureNum);
 		String seats = JOptionPane.showInputDialog("What is the number of seats?");
 		out.println(seats);
 		
